@@ -1,0 +1,62 @@
+---
+title       : Developing Data Products
+subtitle    : Reproducible Pitch Presentation 
+author      : Aditya De
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## Agriculture: Some Facts
+
+- Agriculture is an essential activity for human survival.
+- It provides us food, clothing, biofuel, and medicine.
+- A farm can be considered as a system of production in which there are many interactions between soil-plant-atmosphere.
+- Some of the inputs required in the system are water, fertilizers, and solar radiation.
+- Not all the inputs are renewable, such as fertilizers. This implies that scarcer the source more expensive it is.
+- Sustainability is an important issue in agriculture. To achieve a sustainable production, the production system should provide benefits for the economy, society, and environment. Wisely use of inputs in the system aids to a more sustainable agriculture.
+
+--- .class #id 
+
+## App: Fieldprint Graph
+
+- The Fieldprint Graph is an app that plots a variety of sustainable indicators that summarizes a production system performance in comparison with an average production system.
+- The app was based on a pre-existent webtool called [Field to Market](https://www.youtube.com/embed/JBN2Jx9eEuc). The idea was to adapt this tool to Brazil.
+- The sustainable indicators are: energy consumption, soil conservation, emissions, biodiversity, water use, land use, and resource consumption.
+- The app helps farmers to identify where they could prioritize investments to improve their production system.
+
+--- .class #id 
+
+
+## How the App Works
+
+- So far, the user needs to input the indexes for each one of the sustainable indicators. The indexes calculations will be developed in the future based on raw information.
+- The graph is rendered according to the user input.
+- Higher the sustainable indexes the better. If an indicator is below the average (red dotted line), it should be given priority to be improved.
+
+Access: 
+- The app at:http://adityade.shinyapps.io/plot/
+- [ui.R](https://github.com/adityade/dev-data-prod-project/blob/master/ui.R)
+- [server.R](https://github.com/adityade/dev-data-prod-project/blob/master/server.R)
+- [radar.R](https://github.com/adityade/dev-data-prod-project/blob/master/radar.R)
+
+*Note*: even though the app uses the user inputs, there are calculations in the function built to plot the graph.
+
+--- .class #id
+
+## How it Looks
+
+
+```r
+source("radar.R")
+values <- data.frame(0.4, 0.7, 0.7, 0.8, 0.2, 0.5, 0.5, 0.5)
+names(values) = c("Energy","Soil","Emmissions","Biodiversity","Water","Land","Resource","Ecotoxity")
+webplot(values, col="darkgreen")
+```
+
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1.png) 
+
+
